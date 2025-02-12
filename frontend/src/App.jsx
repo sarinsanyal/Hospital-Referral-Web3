@@ -1,55 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
+import { contractAddress } from '../config';
+import abi from '../utils/abi.json'
 
 function App() {
-  const [web3, setWeb3] = useState(null);
   const [account, setAccount] = useState(null);
+  const [contract, setContract] = useState(null);
 
   useEffect(() => {
-    if (window.ethereum) {
-      const web3Instance = new Web3(window.ethereum);
-      setWeb3(web3Instance);
-
-      window.ethereum.request({ method: 'eth_accounts' })
-        .then(accounts => {
-          if (accounts.length > 0) {
-            setAccount(accounts[0]);
-          }
-        });
-
-      window.ethereum.on('accountsChanged', (accounts) => {
-        if (accounts.length > 0) {
-          setAccount(accounts[0]);
-        } else {
-          setAccount(null);
-        }
-      });
-    } else {
-      alert('Please install MetaMask to use this feature.');
-    }
-  }, []);
+    connectWallet();
+  }, [account]);
 
   const connectWallet = async () => {
-    if (web3) {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        setAccount(accounts[0]);
-      } catch (error) {
-        console.error('User rejected the request.');
-      }
+    if (window.ethereum) {
+      const web3 = new Web3(window.ethereum);
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+      const accounts = await web3.eth.getAccounts();
+      setAccount(accounts[0]);
+
+      // contracts
+      const contractInstance = new web3.eth.Contract(abi, contractAddress);
+      setContract(contractInstance);
+
+    } else {
+      alert('MetaMask not detected. Please install MetaMask.');
     }
   };
 
+
+  const admitPatient = async (patientId) => {
+    if (!contract) {
+      alert("Connect Wallet First!");
+      return;
+    }
+
+    try {
+      await contract.methods.admitPatient(patientId).send({ from: account });
+      alert(`Patient ${patientId} admitted successfully!`);
+    } catch (error) {
+      alert(`Error admitting patient: ${error.message}`);
+    }
+  };
+
+
+
   return (
-    <div>
-      {account ? (
-        <div>
-          <p>Connected Account: {account}</p>
-        </div>
+    <>
+      {!account ? (
+        <>
+          <button onClick={connectWallet}>Connect Wallet</button>
+        </>
       ) : (
-        <button onClick={connectWallet}>Connect MetaMask</button>
+        <>
+          <p>Account connected: {account}</p>
+          <button onClick={() => { admitPatient(12345678901234567890n) }}>Admit paitent</button>
+        </>
       )}
-    </div>
+    </>
   );
 }
 

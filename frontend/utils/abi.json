@@ -1,0 +1,334 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "acceptReferral",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "admitPatient",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "dischargePatient",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "enforceReferralRule",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "newHospital",
+				"type": "address"
+			}
+		],
+		"name": "referPatient",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_hospitalAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_availableBeds",
+				"type": "uint256"
+			}
+		],
+		"name": "registerHospital",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "patientDetails",
+				"type": "string"
+			}
+		],
+		"name": "requestAdmission",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "newBedCount",
+				"type": "uint256"
+			}
+		],
+		"name": "updateBedAvailability",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "ipfsHash",
+				"type": "string"
+			}
+		],
+		"name": "uploadMedicalBill",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "ipfsHash",
+				"type": "string"
+			}
+		],
+		"name": "uploadMedicalReport",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "admin",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "hospital",
+				"type": "address"
+			}
+		],
+		"name": "getAvailableBeds",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "getMedicalBill",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "getMedicalReports",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hospitals",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "hospitalAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "availableBeds",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isRegistered",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isHospital",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "patients",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "details",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "isAdmitted",
+				"type": "bool"
+			},
+			{
+				"internalType": "string",
+				"name": "medicalBill",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "currentHospital",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "referralCount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
