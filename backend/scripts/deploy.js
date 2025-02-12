@@ -2,9 +2,9 @@ const hre = require("hardhat");
 
 async function main() {
     const Counter = await hre.ethers.getContractFactory("Counter");
-    const contract = await Counter.deploy();
-
-    console.log(`Contract deployed at: ${contract.target}`);
+    const counter = await Counter.deploy();
+    await counter.waitForDeployment();
+    console.log("Counter deployed to:", await counter.getAddress());
 }
 
 main().catch((error) => {
