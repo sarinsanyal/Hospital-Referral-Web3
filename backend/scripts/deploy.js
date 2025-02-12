@@ -1,8 +1,8 @@
 const hre = require("hardhat");
 
 async function main() {
-    const HospitalReferral = await hre.ethers.getContractFactory("HospitalReferral");
-    const contract = await HospitalReferral.deploy();
+    const Counter = await hre.ethers.getContractFactory("Counter");
+    const contract = await Counter.deploy();
 
     console.log(`Contract deployed at: ${contract.target}`);
 }
